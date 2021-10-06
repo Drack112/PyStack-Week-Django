@@ -8,7 +8,8 @@ urlpatterns = [
     # python3 manage.py createsuperuser
     path('admin/', admin.site.urls),
     # http://127.0.0.1:8000/auth/ 
-    path("auth/", include('usuarios.urls'))
+    path("auth/", include('usuarios.urls')),
+    path("home/", include('cursos.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

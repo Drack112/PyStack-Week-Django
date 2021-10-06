@@ -34,9 +34,10 @@ INSTALLED_APPS = [
   'django.contrib.messages', 
   'django.contrib.staticfiles',
   # python3 manage.py startapp usuarios 
-  'usuarios'
+  'usuarios',
   # python3 manage.py makemigrations
   # python3 manage.py migrate
+  'cursos',
   ]
 
 MIDDLEWARE = [
@@ -82,19 +83,16 @@ AUTH_PASSWORD_VALIDATORS = [{
 }]
 
 LANGUAGE_CODE = 'pt-BR' # Idioma
-
 TIME_ZONE = 'America/Sao_Paulo' # TimeZone
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = os.path.join(BASE_DIR, "templates/static"),
 STATIC_ROOT = os.path.join("static")
+
+# Pasta onde as imagens serão postadas
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 

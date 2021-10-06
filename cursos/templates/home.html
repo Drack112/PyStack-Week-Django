@@ -1,0 +1,29 @@
+{% extends 'base.html'%} {% block 'titulo'%} Home {% endblock%}
+<!--Body-->
+{% block 'body'%}
+<div class="container">
+  <br />
+  <h1>Nossos cursos</h1>
+  <div class="row">
+    <!--Operação FOR-->
+    {% for i in cursos %}
+
+    <div style="margin-top: 20px" class="col-md">
+      <div class="card" style="width: 18rem">
+        <!--atraves do i, acessar a thumb que foi upada-->
+        <img class="card-img-top" src="{{i.thumb.url}}" alt="Card image cap" />
+        <div class="card-body">
+          <!--Nome do curso-->
+          <h5 class="card-title">{{i.nome}}</h5>
+          <!--Descrição do curso-->
+          <p class="card-text">{{i.descricao}}</p>
+          <!--Acessar o ID do curso-->
+          <a href="{% url 'aula' i.id %}" class="btn btn-primary">Acessar</a>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
