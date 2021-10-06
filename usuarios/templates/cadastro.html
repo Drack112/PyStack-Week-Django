@@ -1,0 +1,70 @@
+<!--Pegar o template base.html-->
+{% extends 'base.html'%}
+<!--Onde definimos o block titulo iremos passar o que a gente quer que ele seja-->
+{% block 'titulo'%} Cadastro {% endblock%}
+<!--Endblock= Fechar o Bloco-->
+<!--Mesa função do block acima porém pro body-->
+{% block 'body' %}
+<div class="container">
+  <!--Fazer um IF & else com a variavel dos views-->
+  {% if status == '1' %}
+  <div class="alert alert-danger" role="alert">
+    E-mail já cadastrado no sistema
+  </div>
+  {% endif %} {% if status == '2' %}
+  <div class="alert alert-danger" role="alert">
+    Nome e Email não podem ser vazios
+  </div>
+  {% endif %} {% if status == '3' %}
+  <div class="alert alert-danger" role="alert">
+    Senha deve conter no mínimo 8 caracteres
+  </div>
+  {% endif %} {% if status == '4' %}
+  <div class="alert alert-danger" role="alert">Erro interno do sistema</div>
+  {% endif %} {% if status == '0' %}
+  <div class="alert alert-success" role="alert">
+    Cadastro confirmado com sucesso
+  </div>
+  {% endif %}
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md">
+      <br />
+      <h1>Cadastre-se</h1>
+      <hr />
+      <form method="POST" action="{% url 'valida_cadastro'%}">
+        <!--INPUT que vai verificar se o formulário é valido-->
+        {% csrf_token %}
+        <label>Digite seu nome:</label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Nome..."
+          name="nome"
+        />
+        <br />
+        <label>Digite seu Email:</label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="E-mail"
+          name="email"
+        />
+        <br />
+        <label>Digite seu senha:</label>
+        <input
+          class="form-control"
+          type="password"
+          placeholder="Senha"
+          name="senha"
+        />
+        <br />
+        <input class="btn btn-success btn-lg" type="submit" />
+        <a href="#" class="btn btn-info btn-lg">Logar</a>
+      </form>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+<!--Fechamento do Block body-->
+{% endblock %}
