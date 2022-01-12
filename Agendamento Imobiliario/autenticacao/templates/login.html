@@ -3,63 +3,66 @@
 
 
 {% block 'head' %}
-    <link rel="stylesheet" href="{% static 'autenticacao/css/cadastro.css' %}">
+<link rel="stylesheet" href="{% static 'autenticacao/css/cadastro.css' %}">
+
 {% endblock %}
 
-
-{% block 'titulo' %}Cadastre-se{% endblock %}
+{% block 'titulo' %}Login{% endblock %}
 
 {% block 'body' %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 sidebar">
-                <div class="logo_sidebar">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 sidebar">
+      <div class="logo_sidebar">
 
-                    <h2 class="logo">
-                        <img class="img_logo_sidebar" src="{% static 'autenticacao/img/logo.png' %}">
-                        IMOBI
-                    </h2>
+        <h2 class="logo">
+          <img class="img_logo_sidebar" src="{% static 'autenticacao/img/logo.png' %}">IMOBI
+        </h2>
 
-                </div>
-
-                <div class="corpo_sidebar">
-                    <div>
-                        <h2 class="titulo cor_branca">Logar</h2>
-                    </div>
-
-                    <div>
-                        <p class="cor_branca descricao">As melhores casas</p>
-                        <p style="margin-top:-20px" class="cor_branca descricao">Nos melhores preços</p>
-                        <br>
-                        <br>
-                        <a class="btn_logar" href="{% url 'cadastro' %}">Cadastre-se</a>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-md-9">
-                <div class="area_cadastrar">
-                    <h2 class="titulo_area_cadastrar">Logar</h2>
-                    {% if messages %}
-                            {% for message in messages %}
-                                <div class="alert {{message.tags}}">
-                                    {{message}}
-                                </div>
-                            {% endfor %}
-                    {% endif %}
-                    <br>
-                    <br>
-                    <form method="POST" action="{% url 'login' %}">{% csrf_token %}
-                        <input name="username" class="input_cadastrar input_cadastrar_email" type="text" placeholder="Username...">
-                        <br>
-                        <br>
-                        <input name="senha" class="input_cadastrar input_cadastrar_senha" type="password" placeholder="Senha...">
-                        <br>
-                        <input class="btn_cadastrar" type="submit" value="Logar">
-                    </form>
-                </div>
-            </div>
+      </div>
+      <div class="corpo_sidebar">
+        <div>
+          <h2 class="titulo cor_branca">Login</h2>
         </div>
+
+        <div>
+          <p class="cor_branca descricao">As melhores casas</p>
+          <p style="margin-top:-20px" class="cor_branca descricao">Nos melhores preços</p>
+          <br>
+          <br>
+          <a class="btn_logar" href="{% url 'cadastro' %}">Cadastre-se</a>
+        </div>
+      </div>
+
     </div>
+
+    <div class="col-md-9">
+      <div class="area_cadastrar">
+        <h2 class="titulo_area_cadastrar">Login</h2>
+        <!--Carregar tags de messagens-->
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert {{message.tags}}">
+          {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <br>
+        <br>
+        <!--csrf token para a verificação do formulario-->
+        <form method="POST" action="{% url 'login' %}">{% csrf_token %}
+          <input name="username" class="input_cadastrar input_cadastrar_email" type="text" placeholder="Username...">
+          <br>
+          <br>
+          <input name="senha" class="input_cadastrar input_cadastrar_senha" type="password" placeholder="Senha...">
+          <br>
+          <input class="btn_cadastrar" type="submit" value="Login">
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 {% endblock %}

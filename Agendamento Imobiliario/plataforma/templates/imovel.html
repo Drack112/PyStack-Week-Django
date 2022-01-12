@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'plataforma/css/home.css' %}">
+{% endblock  %}
+
+{% block 'body' %}
+
+<div style="text-align: center" class="container">
+  <br>
+  <br>
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <!--Carrosel de imagens-->
+    <div class="carousel-inner">
+      {% for img in imovel.imagens.all  %}
+      <div class="carousel-item {% if forloop.first %} active {% endif %}">
+        <img class="d-block w-100" src="{{img}}" alt="First slide">
+      </div>
+      {% endfor %}
+
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <div class="row">
+    <div class="col-md">
+      <h3 class="titulo_especificacao">Valor</h3>
+      <p class="especificacao">R$ {{imovel.valor}}</p>
+
+    </div>
+
+    <div class="col-md">
+      <h3 class="titulo_especificacao">Quartos</h3>
+      <p class="especificacao">{{imovel.quartos}} Quartos</p>
+    </div>
+
+    <div class="col-md">
+      <h3 class="titulo_especificacao">Tamanho</h3>
+      <p class="especificacao">{{imovel.tamanho}}m²</p>
+    </div>
+
+
+
+  </div>
+  <br>
+  <br>
+  <div style="text-align: left">
+    <h3 class="titulo_especificacao">Endereço</h3>
+    <p class="especificacao_endereco">{{imovel.rua}}, {{imovel.cidade }}</p>
+  </div>
+
+  <br>
+  <div style="text-align: left">
+    <h3 class="titulo_especificacao">descricao</h3>
+    <p class="especificacao_endereco">{{imovel.descricao}}</p>
+    <br>
+    <button class="btn_agendar_visita" data-toggle="modal" data-target="#exampleModal">AGENDAR VISITA</button>
+    <br>
+    <br>
+  </div>
+
+  <hr style="border: 1px solid black">
+  <br>
+  <div class="div_possivel_interesse">
+    <h3 class="titulo_especificacao">Talvez você se interesse por</h3>
+
+    <div class="row">
+      {% for sugestao in sugestoes %}
+      <div class="col-md cont">
+        <div class="card_imovel">
+          <img class="img_capa_imovel" src="{{sugestao.imagens.all.0.img.url}}">
+          <div class="informacoes_imoveis">
+            <a class="a_none" href="{% url 'imovel' sugestao.id %}">
+              <h4 class="valor">R$ {{sugestao.valor}}</h4>
+            </a>
+            <p>{{sugestao.rua}}, {{sugestao.cidade}}</p>
+            <br>
+            <img width="7%" src="{% static 'plataforma/img/heart.png' %}">
+          </div>
+
+        </div>
+
+      </div>
+
+      {% endfor %}
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+</div>
+
+
+{% endblock  %}

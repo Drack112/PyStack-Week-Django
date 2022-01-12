@@ -10,7 +10,7 @@ services:
       PGDATA: /data/postgres
     volumes:
       - postgres:/data/postgres
-      - .:/code
+      - .:/home/code
     ports:
       - "5432:5432"
     networks:
@@ -35,7 +35,7 @@ services:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code
+      - .:/home/code
     ports:
       - "8000:8000"
     networks:

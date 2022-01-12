@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+
+<link rel="stylesheet" href="{% static 'plataforma/css/home.css' %}">
+
+{% endblock  %}
+
+{% block 'body' %}
+
+<div class="container">
+  <br>
+  <button type="button" class="btn_filtrar" data-toggle="modal" data-target="#exampleModal">
+    FILTRAR
+  </button>
+
+  <div class="row">
+
+    {% for imovel in imoveis %}
+
+    <div class="col-md cont">
+      <div class="card_imovel">
+        <img class="img_capa_imovel" src="{{imovel.imagens.all.0.img.url}}">
+        <div class="informacoes_imoveis">
+          <a class="a_none" href="{% url 'imovel' imovel.id %}">
+            <h4 class="valor">R$ {{imovel.valor}}</h4>
+          </a>
+          <p>{{imovel.rua}}, {{imovel.cidade}}</p>
+          <br>
+          <img width="7%" src="{% static 'plataforma/img/heart.png' %}">
+        </div>
+
+      </div>
+
+    </div>
+
+    {% endfor %}
+
+  </div>
+
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title titulo_filtrar" id="exampleModalLabel">FILTRAR</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'home' %}" method="GET">
+          <label>Preço mínimo</label>
+          <br>
+          <input name="preco_minimo" class="form-control" type="number" placeholder="R$ 00">
+
+          <br>
+
+          <label>Preço máximo</label>
+          <br>
+          <input name="preco_maximo" class="form-control" type="number" placeholder="R$ 200000000">
+
+          <br>
+
+          <label>Cidade</label>
+          <br>
+          <select name="cidade" class="form-control">
+            {% for cidade in cidades %}
+            <option value="{{cidade.id}}">{{cidade.nome}}</option>
+
+            {% endfor %}
+          </select>
+
+          <br>
+
+          <label>Tipo</label>
+          <br>
+
+          <input name="tipo" type="checkbox" value="A"><label>&nbspApartamento</label>
+          <br>
+          <input name="tipo" type="checkbox" value="C"><label>&nbspCasa</label>
+          <br>
+          <br>
+          <input class="btn_filtrar_modal" type="submit" value="FILTRAR">
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

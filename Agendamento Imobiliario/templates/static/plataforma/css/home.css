@@ -1,0 +1,135 @@
+.bg_navbar{
+    background-color: #30CD9E;
+}
+
+.font_logo{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+    display: inline;
+
+}
+
+.card_imovel{
+    background-color: #30CD9E;
+
+    width: 20rem;
+    margin-top: 50px;
+    border-radius: 26px;
+}
+
+.img_capa_imovel{
+
+    width: 100%;
+    border-top-left-radius: 26px;
+    border-top-right-radius: 26px;
+
+}
+
+.informacoes_imoveis{
+
+    padding: 20px;
+    color: white;
+
+}
+
+.valor{
+
+    font-weight: bold;
+    border-bottom: 1px solid white;
+}
+
+.btn_filtrar{
+
+    border: none;
+    background-color: transparent;
+    border: 2px solid #30CD9E;
+    color: #30CD9E;
+    padding: 5px 10px 5px 10px;
+    font-weight: bold;
+
+}
+
+.titulo_filtrar{
+
+    color:#30CD9E;
+    font-weight: bold;
+    font-size: 30px;
+
+}
+
+.btn_filtrar_modal{
+
+    border: none;
+    color: white;
+    background-color: #30CD9E;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+.a_none{
+
+    color: white;
+
+}
+
+.a_none:hover{
+
+    text-decoration: none;
+    color: white;
+
+}
+
+.titulo_especificacao{
+    color: #30CD9E;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 40px;
+
+}
+
+.especificacao{
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+.especificacao_endereco{
+    font-size: 25px;
+
+}
+
+.btn_agendar_visita{
+
+    border: none;
+    background-color: #30CD9E;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px 10px 5px 10px;
+
+}
+
+.div_possivel_interesse{
+
+    text-align: left;
+
+}
+
+.btn_agendar{
+
+    border: none;
+    background-color: #30CD9E;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px 10px 5px 10px;
+
+}
+
+.btn_agendar:hover{
+
+    text-decoration: none;
+    color: white;
+
+}
