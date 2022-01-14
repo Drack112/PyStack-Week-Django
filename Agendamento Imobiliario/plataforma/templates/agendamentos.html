@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+
+<link rel="stylesheet" href="{% static 'plataforma/css/home.css' %}">
+
+{% endblock  %}
+
+
+{% block 'body' %}
+
+<div class="container">
+  <br>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">img</th>
+        <th scope="col">Endereco</th>
+        <th scope="col">Dia/Hora</th>
+        <th scope="col">Status</th>
+        <th scope="col">Cancelar</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for visita in visitas %}
+      <tr>
+        <th><img width="80" src="{{visita.imovel.imagens.all.0}}"></th>
+        <td>{{visita.imovel.rua}}, {{visita.imovel.cidade}}</td>
+        <td>{{visita.dia}}/{{visita.horario}}</td>
+        <td>
+          {% if visita.status == "A" %}
+          <span class="badge badge-info">Agendado</span>
+          {% endif %}
+          {% if visita.status == "F" %}
+          <span class="badge badge-success">Finalizado</span>
+          {% endif %}
+          {% if visita.status == "C" %}
+          <span class="badge badge-danger">Cancelado</span>
+          {% endif %}
+        </td>
+        <td>
+          {% if visita.status == "A" %}
+          <a href="{% url 'cancelar_agendamento' visita.id %}" class="btn btn-danger">CANCELAR</a>
+          {% else %}
+          <a href="" class="btn btn-danger disabled">CANCELAR</a>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock  %}

@@ -89,19 +89,45 @@
         </div>
 
       </div>
-
       {% endfor %}
     </div>
-
-
-
   </div>
-
-
-
-
-
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title titulo_filtrar" id="exampleModalLabel">Agendar visita</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'agendar_visitas' %}" method="POST">{% csrf_token %}
+          <label>Escolha um dia</label>
+          <select name="dia" class="form-control">
+            {% for dia in imovel.dias_visita.all %}
+            <option value="{{dia}}">{{dia}}</option>
+            {% endfor %}
+          </select>
+          <br>
+
+          <label>Escolha um horário</label>
+          <select name="horario" class="form-control">
+            {% for horario in imovel.horarios.all %}
+            <option value="{{horario}}">{{horario}}</option>
+            {% endfor %}
+          </select>
+          <input name="id_imovel" type="hidden" value="{{imovel.id}}">
+          <br>
+          <input class="btn_agendar" type="submit" value="AGENDAR">
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 {% endblock  %}

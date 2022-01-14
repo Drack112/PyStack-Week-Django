@@ -2,6 +2,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
 
 from .models import *
 
@@ -45,3 +46,28 @@ def imovel(request, id):
     return render(
         request, "imovel.html", {"imovel": imovel, "sugestoes": sugestoes, "id": id}
     )
+
+
+def agendar_visitas(request):
+    usuario = request.user
+    dia = request.POST.get("dia")
+    horario = request.POST.get("horario")
+    id_imovel = request.POST.get("id_imovel")
+
+    visitas = Visitas(imovel_id=id_imovel, usuario=usuario, dia=dia, horario=horario)
+
+    visitas.save()
+
+    return redirect("/agendamentos")
+
+
+def agendamentos(request):
+    visitas = Visitas.objects.filter(usuario=request.user)
+    return render(request, "agendamentos.html", {"visitas": visitas})
+
+
+def cancelar_agendamento(request, id):
+    visitas = get_object_or_404(Visitas, id=id)
+    visitas.status = "C"
+    visitas.save()
+    return redirect("/agendamentos")
