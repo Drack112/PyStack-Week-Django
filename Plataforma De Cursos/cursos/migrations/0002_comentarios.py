@@ -7,20 +7,37 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('usuarios', '0001_initial'),
-        ('cursos', '0001_initial'),
-    ]
+    dependencies = [("usuarios", "0001_initial"), ("cursos", "0001_initial")]
 
     operations = [
         migrations.CreateModel(
-            name='Comentarios',
+            name="Comentarios",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('comentario', models.TextField()),
-                ('data', models.DateField(default=datetime.datetime.now)),
-                ('aula', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='cursos.aulas')),
-                ('usuario', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='usuarios.usuario')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("comentario", models.TextField()),
+                ("data", models.DateField(default=datetime.datetime.now)),
+                (
+                    "aula",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to="cursos.aulas",
+                    ),
+                ),
+                (
+                    "usuario",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to="usuarios.usuario",
+                    ),
+                ),
             ],
-        ),
+        )
     ]

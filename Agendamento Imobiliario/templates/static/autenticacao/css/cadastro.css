@@ -1,71 +1,71 @@
-.sidebar{
-  background-color: #30CD9E;
+.sidebar {
+  background-color: #30cd9e;
   height: 100vh;
-  }
+}
 
-  .cor_branca{
+.cor_branca {
   color: white;
-  }
+}
 
-  .logo_sidebar{
+.logo_sidebar {
   text-align: center;
   margin-top: 50%;
-  }
+}
 
-  .img_logo_sidebar{
+.img_logo_sidebar {
   width: 70px;
-  }
+}
 
-  .logo{
+.logo {
   font-size: 70px;
   color: white;
-  font-family: 'Courier New', Courier, monospace;
-  }
+  font-family: "Courier New", Courier, monospace;
+}
 
-  .corpo_sidebar{
+.corpo_sidebar {
   margin-top: 50px;
   text-align: center;
-  }
+}
 
-  .titulo{
+.titulo {
   font-size: 50px;
   font-weight: bold;
-  border-bottom: 2px solid #1EA9B1;
+  border-bottom: 2px solid #1ea9b1;
   display: inline;
-  }
+}
 
-  .descricao{
+.descricao {
   font-size: 30px;
-  }
+}
 
-  .btn_logar{
+.btn_logar {
   color: white;
   font-size: 30px;
   border: 2px solid white;
   padding: 10px 20px 10px 20px;
   border-radius: 20px;
-  }
+}
 
-  .btn_logar:hover{
+.btn_logar:hover {
   text-decoration: none;
   color: white;
-  }
+}
 
-  .area_cadastrar{
+.area_cadastrar {
   text-align: center;
-  }
+}
 
-  .titulo_area_cadastrar{
+.titulo_area_cadastrar {
   font-size: 50px;
-  color: #30CD9E;
+  color: #30cd9e;
   margin-top: 15%;
   font-weight: bold;
-  }
+}
 
-  .input_cadastrar{
+.input_cadastrar {
   width: 60%;
   border: none;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   padding: 10px;
   outline: 0;
   font-size: 20px;
@@ -74,26 +74,26 @@
   background-position-x: 20px;
   background-position-y: 10px;
   padding-left: 70px;
-  }
+}
 
-  .input_cadastrar_nome{
-  background-image: url('/static/autenticacao/img/user.png');
-  }
+.input_cadastrar_nome {
+  background-image: url("/static/autenticacao/img/user.png");
+}
 
-  .input_cadastrar_email{
-  background-image: url('/static/autenticacao/img/email.png');
-  }
+.input_cadastrar_email {
+  background-image: url("/static/autenticacao/img/email.png");
+}
 
-  .input_cadastrar_senha{
-  background-image: url('/static/autenticacao/img/senha.png');
-  }
+.input_cadastrar_senha {
+  background-image: url("/static/autenticacao/img/senha.png");
+}
 
-  .btn_cadastrar{
-  background-color: #30CD9E;
+.btn_cadastrar {
+  background-color: #30cd9e;
   border: none;
   color: white;
   font-size: 30px;
   padding: 5px 10px 5px 10px;
   border-radius: 20px;
   margin-top: 4%;
-  }
+}

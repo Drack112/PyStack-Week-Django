@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>📑 Plataforma de Cursos</h1>
+  <h1>🏘️ Imobi</h1>
 </div>
 
 <br>
@@ -12,11 +12,16 @@
 
 <a id="sobre"></a>
 
-## 📑 Sobre o projeto
+## 🏘️ Sobre Projeto Imobi
 
-O projeto **de uma plataforma de cursos** visa ajudar pessoas a terem acesso a cursos gratuitos de uma forma fácil e eficiente.
+O projeto **Imobi** visa ajudar pessoas a conseguirem de uma forma fácil, agendar visitas imóveis que estão sendo anunciados na plataforma.
 
-O site conta ainda com um sistema de cadastro, sistema de avaliações e dentre outras features. 🥰
+O site conta ainda com um sistema de agendamento moderno, um tópico de pesquisa com sugestões para o usuário com funcionalidades de gerenciamento de agendamento. 🥰
+
+<div align="center">
+    <img src="./.github/app.png" />
+    <img src="./.github/app2.png" />
+</div>
 
 <a id="tecnologias"></a>
 
