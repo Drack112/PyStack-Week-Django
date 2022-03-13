@@ -95,5 +95,3 @@ $ python manage.py runserver
 ```
 
 #### _Sinta-se livre para colaborar, toda ajuda é bem vinda ;)_
-
-<br/>

@@ -4,20 +4,15 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY", default="foo")
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.getenv("DEBUG", default=1))
 
 ALLOWED_HOSTS = os.getenv(
     "DJANGO_ALLOWED_HOSTS", default="localhost 127.0.0.1 [::1] "
 ).split(" ")
 
-# Apps instalados
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
