@@ -1,0 +1,5 @@
+venv/
+media/
+.idea/
+
+.env
