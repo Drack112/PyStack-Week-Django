@@ -69,13 +69,15 @@ PGADMIN_DEFAULT_EMAIL=
 PGADMIN_DEFAULT_PASSWORD=
 ```
 
-Se voce for usar Docker :dolphin:
+## Se lembre de ter o Docker :dolphin:
+
+### UM comando só:
 
 ```bash
 $ docker-compose up
 ```
 
-Manualmente:
+### Manualmente:
 
 Crie um banco de dados com o docker-compose
 
