@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block 'head' %}
 <link rel="stylesheet" href="{% static 'auth/css/cadastro.css' %}" />
 {% endblock %}
+
 {% block 'body' %}
 <div class="box">
   <form action="{% url 'cadastro' %}" method="POST">

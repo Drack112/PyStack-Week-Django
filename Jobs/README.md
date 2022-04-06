@@ -10,10 +10,16 @@
 
 <a id="sobre"></a>
 
-_Em Desenvolvimento_
+O projeto jobs visa ser um lugar de acesso a vagas de pequenos trabalhos onde a pessoa pode ser recompensado por realizar ediçoes de videos e dentre outras coisas. :)_
 
+Tela de Login
 <div align="center">
     <img src="./.github/app-login.png" />
+</div>
+
+Home Page
+<div align="center">
+    <img src="./.github/app-home.png" />
 </div>
 
 <a id="tecnologias"></a>
@@ -35,8 +41,6 @@ O projeto foi desenvolvido usando as tecnologias:
 
 ## :running: Rodando o projeto
 
-### Rodando através da fonte:
-
 ### 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
@@ -45,7 +49,7 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 - Você tem uma máquina `< Windows / Linux / Mac >`.
 - Você possui um `< Editor de código ou IDE / Gerenciador de banco de dados >`.
 
-## ☕ Rodando
+## ☕ Pequeno tutorial
 
 Preencha o arquivo `.env.example` com as informações cobradas e depois renomeie para `.env`.
 

@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'jobs/css/encontrar_jobs.css' %}" />
+{% endblock %}
+
+
+{% block 'body' %}
+<div class="container">
+  <br />
+  <br />
+  <div class="row">
+    <div class="col-sm">
+      <form action="{% url 'encontrar_jobs' %}" method="GET">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Preço mínimo"
+          name="preco_minimo"
+        />
+        <br />
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Preço máximo"
+          name="preco_maximo"
+        />
+      </form>
+    </div>
+
+    <div class="col-sm">
+      <input type="date" class="form-control" name="prazo_minimo" />
+      <br />
+      <input type="date" class="form-control" name="prazo_maximo" />
+    </div>
+
+    <div class="col-sm">
+      <select class="form-control" name="categoria">
+        <option value="D">Design</option>
+        <option value="EV">Edição de vídeo</option>
+      </select>
+      <br />
+      <input type="submit" class="btn btn-success btn-lg" value="FILTRAR" />
+    </div>
+  </div>
+  <br />
+  <br />
+  <h2 class="titulo">JOB’S EM ABERTO:</h2>
+  <div class="row justify-content-around">
+    {% for job in jobs %}
+      <div class="col-6 row-card">
+        <div class="card-job">
+          <div class="header-job">
+            <h4 class="titulo-job">{{job.titulo}}</h4>
+          </div>
+          <div class="body-job">
+            <p class="titulo-body">Descrição:</p>
+            <div style="width: 70%">
+              <p>{{job.descricao}}</p>
+            </div>
+
+            <div class="row">
+              <div class="col-4">
+                <p class="titulo-body">Preço:</p>
+                <p>{{job.preco}}</p>
+              </div>
+
+              <div class="col-4">
+                <p class="titulo-body">Prazo:</p>
+                <p>{{job.prazo_entrega}}</p>
+              </div>
+
+              <div class="col-4">
+                <p class="titulo-body">Categoria:</p>
+                <p>
+                  {% if job.categoria == 'D'%}
+                    Design
+                  {% else %}
+                    Edição de vídeo
+                  {% endif%}
+                </p>
+              </div>
+            </div>
+
+            <button class="btn btn-success">Ver detalhes</button>
+            <br />
+            <br />
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
