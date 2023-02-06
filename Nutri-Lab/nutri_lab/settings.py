@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 
 import os
 
+from django.contrib.messages import constants
 
 load_dotenv()
 
@@ -22,6 +23,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # apps
+    "autenticacao",
 ]
 
 MIDDLEWARE = [
@@ -102,3 +105,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 APPEND_SLASH = False
+
+MESSAGE_TAGS = {
+    constants.DEBUG: "alert-primary",
+    constants.ERROR: "alert-danger",
+    constants.SUCCESS: "alert-success",
+    constants.INFO: "alert-info",
+    constants.WARNING: "alert-warning",
+}
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST_USER = "onepessoa3@gmail.com"
