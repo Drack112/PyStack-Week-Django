@@ -5,6 +5,7 @@ from django.conf import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("auth/", include("autenticacao.urls")),
 ]
 
 if settings.DEBUG:
