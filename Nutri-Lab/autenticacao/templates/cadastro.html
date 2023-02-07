@@ -1,18 +1,8 @@
 {% extends 'base.html' %}
-
-{% comment %}
-Fazer configuração em templates em dirs, se nao nao aparece, Só aparece algo se colocar o bloco body do html base,  Substituir os blocos pelos conteúdos
-{% endcomment %}
-
-
-{% comment %}
-Importando o arquivo all.css para dar estilo ara o cadastro.html
-{% endcomment %}
-
 {% load static %}
 
 {% block 'head' %}
-<link rel="stylesheet" href="{% static 'auth/css/cadastro.css' %}">  {% comment %} É bom utilizar tag django em tds os LINKS pois muda automaticamente as configurações ao vc mudar algo em settings por ex {% endcomment %}
+<link rel="stylesheet" href="{% static 'auth/css/cadastro.css' %}">
 {% endblock %}
 
 
@@ -23,19 +13,13 @@ Importando o arquivo all.css para dar estilo ara o cadastro.html
   <div class="row">
     <div class="col-md-3 sidebar">
       <div class="logo_sidebar">
-
         <h2 class="logo">
           <img class="img_logo_sidebar" src="{% static 'assets/logo_nutri_lab.png' %}">
         </h2>
-
       </div>
-
-
     </div>
-
     <div class="col-md-9">
       <div class="area_cadastrar">
-
         {% if messages %}
         <br>
         {% for message in messages %}
@@ -44,12 +28,10 @@ Importando o arquivo all.css para dar estilo ara o cadastro.html
         </div>
         {% endfor %}
         {% endif %}
-
         <h2 class="titulo">Seja bem vindo</h2>
         <p class="sub-titulo">Crie sua conta</p>
         <hr>
 
-        {% comment %} Colocar csrf_toklen para nao dar erro 'PROIBIDO', (csrf_token = Proteção do Django contra falsificação de formulario)  {% endcomment %}
         <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
           <span class="bold">Nome de usuário</span>
           <input class="form-control input-form" name="usuario" type="text" placeholder="Digite seu nome...">
@@ -65,16 +47,18 @@ Importando o arquivo all.css para dar estilo ara o cadastro.html
 
             <div class="col-md">
               <span class="bold">Confirmar senha</span>
-              <input class="form-control input-form" name="confirmar_senha" type="password" placeholder="Confirme sua senha...">
+              <input class="form-control input-form" name="confirmar_senha" type="password"
+                     placeholder="Confirme sua senha...">
             </div>
           </div>
           <br>
           <button class="btn-first">Registrar</button>
-
         </form>
-        <h3 style="position: absolute; bottom: 65px; font-weight: bold">Já possui uma conta ?&nbsp <a href="{% url 'logar' %}" class="btn btn-outline-success btn-lg">Logar</a> </h3>
+        <h3 style="position: absolute; bottom: 65px; font-weight: bold">Já possui uma conta ?&nbsp <a
+          href="{% url 'logar' %}" class="btn btn-outline-success btn-lg">Logar</a></h3>
       </div>
     </div>
   </div>
 </div>
+
 {% endblock %}

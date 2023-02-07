@@ -1,38 +1,42 @@
 import os
-
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.models import User
-from django.contrib import messages, auth
-from django.contrib.messages import constants
-from django.conf import settings
-
 from hashlib import sha256
 
-from .utils import password_confirm
-from .email import send_email
+from django.conf import settings
+from django.contrib import auth
+from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib.messages import constants
+from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import render
+
 from .models import Ativacao
+from .utils import (
+  password_is_valid,
+  email_html,
+)
 
 
-# Create your views here.
-def cadastro(request):
+def cadastro(
+    request,
+):
     if request.method == "GET":
         if request.user.is_authenticated:
-            return redirect(request, "/")
+            return redirect("/")
         return render(request, "cadastro.html")
+
     elif request.method == "POST":
         username = request.POST.get("usuario")
-        senha = request.POST.get("senha")
         email = request.POST.get("email")
+        senha = request.POST.get("senha")
         confirmar_senha = request.POST.get("confirmar_senha")
 
-        if not password_confirm.password_is_valid(request, senha, confirmar_senha):
+        if not password_is_valid(request, senha, confirmar_senha):
             return redirect("/auth/cadastro")
 
         try:
             user = User.objects.create_user(
-                username=username, email=email, password=senha, is_active=False
+                username=username, password=senha, is_active=False
             )
-
             user.save()
 
             token = sha256(f"{username}{email}".encode()).hexdigest()
@@ -43,9 +47,9 @@ def cadastro(request):
                 settings.BASE_DIR,
                 "autenticacao/templates/emails/cadastro_confirmado.html",
             )
-            send_email.email_html(
+            email_html(
                 path_template,
-                "Cadastro Confirmado",
+                "Cadastro confirmado",
                 [
                     email,
                 ],
@@ -54,21 +58,18 @@ def cadastro(request):
             )
 
             messages.add_message(
-                request, constants.SUCCESS, "Cadastro realizado com sucesso"
+                request, constants.SUCCESS, "Usuário cadastrado com sucesso"
             )
-
             return redirect("/auth/logar")
         except:
             messages.add_message(request, constants.ERROR, "Erro interno no sistema")
             return redirect("/auth/cadastro")
 
-    # vQM5KaFtj4R8REN
-
 
 def logar(request):
     if request.method == "GET":
         if request.user.is_authenticated:
-            return redirect(request, "/")
+            return redirect("/")
         return render(request, "login.html")
     elif request.method == "POST":
         username = request.POST.get("usuario")
@@ -83,17 +84,16 @@ def logar(request):
             return redirect("/auth/logar")
         else:
             auth.login(request, usuario)
-            return redirect("/")
+            return redirect("/pacientes")
 
 
 def sair(request):
-    auth.login(request)
-    return redirect(request, "/auth/logar")
+    auth.logout(request)
+    return redirect("/auth/logar")
 
 
 def ativar_conta(request, token):
     token = get_object_or_404(Ativacao, token=token)
-
     if token.ativo:
         messages.add_message(request, constants.WARNING, "Esse token já foi usado")
         return redirect("/auth/logar")

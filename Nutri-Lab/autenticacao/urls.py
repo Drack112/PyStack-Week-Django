@@ -1,10 +1,10 @@
 from django.urls import path
 
-from autenticacao.views import logar, cadastro, sair, ativar_conta
+from . import views
 
 urlpatterns = [
-    path("cadastro", cadastro, name="cadastro"),
-    path("logar", logar, name="logar"),
-    path("sair", sair, name="logout"),
-    path("ativar_conta/<str:token>", ativar_conta, name="ativar_conta"),
+    path("cadastro/", views.cadastro, name="cadastro"),
+    path("logar/", views.logar, name="logar"),
+    path("sair/", views.sair, name="sair"),
+    path("ativar_conta/<str:token>/", views.ativar_conta, name="ativar_conta"),
 ]
