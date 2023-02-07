@@ -22,7 +22,7 @@ O projeto **Nutri-Lab** visa centralizar um bjetivo, que é uma aplicação para
 
 <div align="center">
     <img src="./.github/media/dados_paciente.gif" />
-    <img src="./.github/media/gerenciar_pacientes.gig" />
+    <img src="./.github/media/gerenciar_pacientes.gif" />
 </div>
 
 <a id="tecnologias"></a> 
