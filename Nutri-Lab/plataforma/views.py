@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Pacientes, DadosPaciente, Refeicao, Opcao
 
 
-@login_required(login_url="/auth/logar/")
+@login_required(login_url="/auth/logar")
 def pacientes(request):
     if request.method == "GET":
         pacientes = Pacientes.objects.filter(nutri=request.user)
@@ -29,11 +29,11 @@ def pacientes(request):
             or (len(telefone.strip()) == 0)
         ):
             messages.add_message(request, constants.ERROR, "Preencha todos os campos")
-            return redirect("/pacientes/")
+            return redirect("/pacientes")
 
         if not idade.isnumeric():
             messages.add_message(request, constants.ERROR, "Digite uma idade válida")
-            return redirect("/pacientes/")
+            return redirect("/pacientes")
 
         paciente = Pacientes.objects.filter(email=email)
 
@@ -41,7 +41,7 @@ def pacientes(request):
             messages.add_message(
                 request, constants.ERROR, "Já existe um paciente com esse E-mail"
             )
-            return redirect("/pacientes/")
+            return redirect("/pacientes")
 
         try:
             p1 = Pacientes(
@@ -56,25 +56,25 @@ def pacientes(request):
             messages.add_message(
                 request, constants.SUCCESS, "Paciente cadastrado com sucesso!"
             )
-            return redirect("/pacientes/")
+            return redirect("/pacientes")
         except:
             messages.add_message(request, constants.ERROR, "Erro interno no sistema")
             return redirect("/pacientes")
 
 
-@login_required(login_url="/auth/logar/")
+@login_required(login_url="/auth/logar")
 def dados_paciente_listar(request):
     if request.method == "GET":
         pacientes = Pacientes.objects.filter(nutri=request.user)
         return render(request, "dados_paciente_listar.html", {"pacientes": pacientes})
 
 
-@login_required(login_url="/auth/logar/")
+@login_required(login_url="/auth/logar")
 def dados_paciente(request, id):  # id que veio pela url
     paciente = get_object_or_404(Pacientes, id=id)
     if not paciente.nutri == request.user:
         messages.add_message(request, constants.ERROR, "Esse paciente não é seu")
-        return redirect("/dados_paciente/")
+        return redirect("/dados_paciente")
 
     if request.method == "GET":
         dados_paciente = DadosPaciente.objects.filter(paciente=paciente)
@@ -111,13 +111,13 @@ def dados_paciente(request, id):  # id que veio pela url
 
         messages.add_message(request, constants.SUCCESS, "Dados cadastrado com sucesso")
 
-        return redirect("/dados_paciente/")
+        return redirect("/dados_paciente")
 
 
 from django.views.decorators.csrf import csrf_exempt
 
 
-@login_required(login_url="/auth/logar/")
+@login_required(login_url="/auth/logar")
 @csrf_exempt
 def grafico_peso(request, id):
     paciente = Pacientes.objects.get(id=id)
@@ -139,7 +139,7 @@ def plano_alimentar(request, id):
     paciente = get_object_or_404(Pacientes, id=id)
     if not paciente.nutri == request.user:
         messages.add_message(request, constants.ERROR, "Esse paciente não é seu")
-        return redirect("/plano_alimentar_listar/")
+        return redirect("/plano_alimentar_listar")
 
     if request.method == "GET":
         r1 = Refeicao.objects.filter(paciente=paciente).order_by("horario")
@@ -155,7 +155,7 @@ def refeicao(request, id_paciente):
     paciente = get_object_or_404(Pacientes, id=id_paciente)
     if not paciente.nutri == request.user:
         messages.add_message(request, constants.ERROR, "Esse paciente não é seu")
-        return redirect("/dados_paciente/")
+        return redirect("/dados_paciente")
 
     if request.method == "POST":
         titulo = request.POST.get("titulo")
